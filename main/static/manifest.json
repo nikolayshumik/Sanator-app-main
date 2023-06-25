@@ -1,0 +1,13 @@
+{
+    "name": "Pain Tracker",
+    "short_name": "paintracker",
+    "start_url": "https://5048-178-127-224-42.ngrok-free.app",
+    "scope": "/",
+    "display": "standalone",
+    "background_color": "#FFF",
+    "theme_color": "#493174",
+    "description": "Test app for Django and PWA",
+    "dir": "ltr",
+    "lang": "en-US",
+    "orientation": "portrait-primary"
+}

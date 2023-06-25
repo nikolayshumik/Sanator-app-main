@@ -1,0 +1,226 @@
+body{
+    margin: 0;
+    font-family: 'IBM Plex Sans';
+}
+header{
+left: 0;
+right: 0;
+text-align: center;
+background: #00BA7A;
+border: 0;
+border-radius: 10px;
+padding: 10px 20px;
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+color: white;
+}
+a{
+align-items: center;
+color: #000000;
+text-decoration: none;
+}
+.mainGradient{
+background: linear-gradient(180deg, #CCF6FF 0%, #FFFFFF 100%);
+padding: 10px 10px 20px 10px;
+}
+.mainImg{
+    padding: 10px;
+    background-image: url("../assets/link.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100% 110%;
+    }
+.buttonsBack{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.buttonBack{
+margin-left: auto;
+margin-right: auto;
+white-space: nowrap;
+width:220px;
+font-size: 20px;
+margin-top: 10px;
+padding: 10px;
+border: 1px solid #176BE9;
+background: rgba(0, 186, 122, 0.44);
+border-radius: 10px; 
+font-style: normal;
+font-weight: 500;
+color: #FFFFFF;
+text-align: center;
+}
+.dayWeek{
+margin: 10px auto 10px auto;
+background: rgba(0, 186, 122, 0.44);
+color: white;
+border: 0;
+border-radius: 10px;
+padding: 10px 20px 10px 20px;
+text-align: center;
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+width: 40%;
+white-space: nowrap;
+}
+.event{
+margin:10px 15px 10px 15px;
+padding:10px 10px 10px 10px;
+background: white;
+border-radius: 10px;
+display: flex;
+flex-direction: row;
+border: 2px #00BFFF solid;
+font-style: normal;
+align-items: center;
+font-weight: 700;
+font-size: 20px;
+justify-content: center;
+}
+.eventWeek{
+    padding:5px 10px 10px 10px;
+    font-weight: 600;
+    flex-direction:column;
+    margin:10px 15px 10px 15px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    white-space: normal;
+    border: 2px #00BFFF solid;
+    font-style: normal;
+    font-size: 22px;
+    justify-content: center;
+    }
+.vertEvent{
+    font-weight: 600;
+    font-size: 22px;
+    width: 100%;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.place{
+    font-weight: 500; 
+}
+.title{
+font-style: normal;
+font-weight: 500;
+font-size: 30px;
+line-height: 31px;
+text-align: center;
+color: #002115;
+text-align: center;
+}
+input{
+font-size: 20px;
+width: 70%;
+display: flex;
+flex-direction: column;
+max-width: 300px;
+padding: 10px;
+margin-bottom: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+margin: 10px auto;
+}
+.button{
+background: rgba(0, 186, 122, 0.44);
+border-radius: 10px; 
+border: 0;
+padding: 10px 20px;
+font-style: normal;
+line-height: 20px;
+letter-spacing: 0.1px;
+color: #FFFFFF;
+}
+.buttonA{
+    position: absolute;
+    background: rgba(0, 186, 122, 0.44);
+    border-radius: 10px; 
+    border: 0;
+    padding: 10px 20px;
+    font-style: normal;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    color: white;   
+    margin-top: 50px;
+    margin-left: -190px;
+}
+label{
+
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: #66727F;
+}
+form{
+    text-align: center;
+}
+.rules{
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 30px;
+color: #000000;
+text-align: center;
+}
+.rules *{
+    font-family: 'IBM Plex Sans';
+    margin-top: 10px;
+    border-bottom:white 3px solid;
+}
+.eventFoto{
+    margin-top: 10px;
+    width: 100%;
+    height: 70px;
+}
+.disc{
+    font-weight: 500;
+    margin-top: 5px;
+    text-align: left;
+}
+.contacts{
+padding: 10px 15px;
+    border-radius: 10%;
+
+    background-color: white;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 20px 5px 20px 5px;
+}
+.map{
+    display : flex;
+  align-items : center;
+justify-content: center;
+    height: 100vw;
+    border-radius: 10%;
+    background-color: white;
+    margin-top: 10px;
+}
+@media only screen and (min-width: 350px) and (max-width: 450px){
+    .form-control {
+        font-size: 20px;
+    }
+    .button{
+        font-size: 24px;
+    }
+    .buttonA{
+        font-size: 24px;
+    }
+    label{
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    }

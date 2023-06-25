@@ -1,0 +1,62 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <link rel="stylesheet" href="{% static 'main/css/rew.css' %}">
+    <title>Отзывы</title>
+</head>
+<body>
+            
+      <div class="mainGradient">
+
+        <header>
+            Отзывы
+        </header>
+{% block content %}
+        {% if user.is_authenticated %}
+        <form action="{% url 'review' %}" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="button">Отправить</button>
+        </form>
+        {% else %}
+        <p>Чтобы оставить отзыв, необходимо <a class="buttonBack" href="{% url 'register' %}">зарегистрироваться</a>
+        {% endif %}
+        <hr>
+        {% for review in reviews %}
+        <div class="comment">
+        <div class="commentTitle">{{ review.user.username }} <small>{{ review.date }}</small></div>
+        <div class="commentText">{{ review.text }}</div>
+      </div>
+
+        {% endfor %}
+        {% endblock %}
+    
+
+        <div class="buttonsBack">
+            <a class="buttonBack" href="{% url 'daily' %}">Рассписание дня</a>
+            <a class="buttonBack" href="{% url 'rules' %}">Правила</a>
+            <a class="buttonBack" href="{% url 'home' %}">Главная</a>
+        </div>
+    </div>
+
+<script>
+       if ('serviceWorker' in navigator) {
+           navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
+               // registration worked
+               console.log('Registration succeeded. Scope is ' + reg.scope);
+           }).catch(function(error) {
+               // registration failed
+               console.log('Registration failed with ' + error);
+           });
+       }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="mainGradient">
+
+<header>Регистрация</header>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="button" type="submit">Зарегистрироваться</button>
+    <a style="display: block; text-align: center; margin-top: 20px;" href="{% url 'login' %}">Войти</a>
+</form>
+    
+<div>
+
+
+
+    {% if user.is_authenticated %}
+  <div class="text-center mx-auto">
+  <p style="text-align:center;">Добро пожаловать, {{ user.username }} {{ user.get_full_name }}!</p>
+
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button class="button" type="submit">Выйти</button>
+  </form>
+</div>
+  {% endif %}
+</div>
+<div class="buttonsBack" style="margin-top: 60px;">
+    <a class="buttonBack" href="{% url 'daily' %}">Рассписание дня</a>
+    <a class="buttonBack" href="{% url 'rules' %}">Правила</a>
+    <a class="buttonBack" href="{% url 'home' %}">Главная</a>
+</div>
+</div>
+<script>
+       if ('serviceWorker' in navigator) {
+           navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
+               // registration worked
+               console.log('Registration succeeded. Scope is ' + reg.scope);
+           }).catch(function(error) {
+               // registration failed
+               console.log('Registration failed with ' + error);
+           });
+       }
+
+</script>
+</body>
+</html>

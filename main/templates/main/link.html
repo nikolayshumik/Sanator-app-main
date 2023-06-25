@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Связь</title>
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="mainGradient">
+
+    <header>
+        Связь
+    </header>
+    
+    <div class="map">
+    контактные данные
+    </div>
+
+
+    <div class="buttonsBack">
+        {% if user.is_authenticated %}
+        <a class="buttonBack" href="{% url 'daily-view' %}">Процедурная книжка</a>
+          {% endif %}
+        <a class="buttonBack" href="{% url 'daily' %}">Рассписание дня</a>
+        <a class="buttonBack" href="{% url 'home' %}">Главная</a>
+    </div>
+</div>
+<script>
+       if ('serviceWorker' in navigator) {
+           navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
+               // registration worked
+               console.log('Registration succeeded. Scope is ' + reg.scope);
+           }).catch(function(error) {
+               // registration failed
+               console.log('Registration failed with ' + error);
+           });
+       }
+
+</script>
+</body>
+</html>
