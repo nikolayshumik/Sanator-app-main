@@ -19,7 +19,7 @@ from django.views.generic import RedirectView
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from main.forms import CustomUserCreationForm
-from .models import UserDailySchedule
+from .models import Личноерасписание
 from datetime import datetime
 
 
@@ -47,9 +47,6 @@ def posters(request):
     return render(request, 'main/posters.html', {'posters': posters, 'form': form})
 
 
-def dayz(request):
-    return render(request, 'main/dayZ.html')
-
 def link(request):
     # zapret = Zapret.objects.all()
     return render(request, 'main/link.html')
@@ -61,6 +58,9 @@ def ban(request):
 
 def map(request):
     return render(request, 'main/map.html')
+
+def services(request):
+    return render(request, 'main/services.html')
 # рабочая админ панель
 def register_view(request):
     if request.method == 'POST':
@@ -102,11 +102,11 @@ def review_view(request):
         form = ReviewForm()
     return render(request, 'main/review.html', {'reviews': reviews, 'form': form})
 
-@login_required
-def schedule(request):
-    user_schedule = Scheduledaily.objects.filter(user=request.user)
-    context = {'user_schedule': user_schedule}
-    return render(request, 'main/schedule-view.html', context)
+# @login_required
+# def schedule(request):
+#     user_schedule = Scheduledaily.objects.filter(user=request.user)
+#     context = {'user_schedule': user_schedule}
+#     return render(request, 'main/schedule-view.html', context)
 
 def authenticate_by_phone_number(request, phone_number):
     try:
@@ -142,20 +142,51 @@ class MyLogoutView(LogoutView):
 my_logout_view = MyLogoutView.as_view()
 
 
+# @login_required
+# def daily_view(request):
+#     user = request.user
+#     weekday_schedules = {}
+#     for schedule in UserDailySchedule.objects.filter(user=user):
+#         weekday_schedules.setdefault(schedule.weekday, []).append(schedule)
+#     context = {'weekday_schedules': weekday_schedules}
+#     return render(request, 'main/schedule-view.html', context)
+
+# def schedule_for_user(request, user_id, day):
+#     # Получаем расписание для выбранного пользователя на выбранный день
+#     schedules = UserDailySchedule.objects.filter(user_id=user_id, weekday=day).order_by('start_time')
+#
+#     context = {'schedules': schedules}
+#
+#     return render(request, 'main/schedule-view.html', context)
+
+
 @login_required
-def daily_view(request):
-    user = request.user
-    weekday_schedules = {}
-    for schedule in UserDailySchedule.objects.filter(user=user):
-        weekday_schedules.setdefault(schedule.weekday, []).append(schedule)
-    context = {'weekday_schedules': weekday_schedules}
+def расписание(request):
+    пользовательскоерасписание = Scheduledaily.objects.filter(пользователь=request.user)
+    context = {'пользовательскоерасписание': пользовательскоерасписание}
     return render(request, 'main/schedule-view.html', context)
+@login_required
+def расписаниедневное(request):
+    current_user = request.user
+    ежедневноерасписание = {}
+    for расписание in Личноерасписание.objects.filter(пользователь=current_user):
+        ежедневноерасписание.setdefault(расписание.get_деньнедели_display(), []).append(расписание)
+    context = {'ежедневноерасписание': ежедневноерасписание}
+    return render(request, 'main/schedule-view.html', context)
+# @login_required
+# def расписаниедневное(request):
+#     пользователь = request.user
+#     ежедневноерасписание = {}
+#     for расписание in Личноерасписание.objects.filter(пользователь=пользователь):
+#         ежедневноерасписание.setdefault(расписание.деньнедели, []).append(расписание)
+#     context = {'ежедневноерасписание': ежедневноерасписание}
+#     return render(request, 'main/schedule-view.html', context)
 
-def schedule_for_user(request, user_id, day):
+def расписаниепользователя(request, idпользователя, день):
     # Получаем расписание для выбранного пользователя на выбранный день
-    schedules = UserDailySchedule.objects.filter(user_id=user_id, weekday=day).order_by('start_time')
+    расписания = UserDailySchedule.objects.filter(пользовательid=idпользователя, деньнедели=день).orderby('времяначала')
 
-    context = {'schedules': schedules}
+    context = {'расписания': расписания}
 
     return render(request, 'main/schedule-view.html', context)
 

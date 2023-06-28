@@ -5,17 +5,28 @@ from .models import Zapret
 from .models import Rasporiadok
 from .models import Review
 from .models import UserProfile
-from .models import UserDailySchedule
+from .models import Личноерасписание
 
 from django.contrib.auth.admin import UserAdmin
 
 
 
-@admin.register(UserDailySchedule)
-class UserDailyScheduleAdmin(admin.ModelAdmin):
-    list_display = ('user', 'weekday', 'schedule')
-    list_filter = ('user', 'weekday',)
-    search_fields = ['user__username']
+class ЛичноерасписаниеAdmin(admin.ModelAdmin):
+    list_display = ('__str__',)
+
+admin.site.register(Личноерасписание, ЛичноерасписаниеAdmin)
+
+# @admin.register(UserDailySchedule)
+# class UserDailyScheduleAdmin(admin.ModelAdmin):
+#     list_display = ('user', 'weekday', 'schedule')
+#     list_filter = ('user', 'weekday',)
+#     search_fields = ['user__username']
+
+# @admin.register(Личноерасписание)
+# class UserDailyScheduleAdmin(admin.ModelAdmin):
+#     listdisplay = ('пользователь', 'деньнедели', 'расписание')
+#     listfilter = ('пользователь', 'деньнедели',)
+#     searchfields = ['пользовательимяпользователя']
 
 
 class CustomUserAdmin(UserAdmin):

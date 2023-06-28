@@ -9,6 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="manifest" href="{% static 'manifest.json' %}">
     <link rel="stylesheet" href="{% static 'main/css/rew.css' %}">
+    <link rel="stylesheet" href="{% static 'jquery-bar-rating-master/dist/themes/fontawesome-stars.css' %}">
+    <script src="{% static 'jquery-bar-rating-master/dist/jquery.barrating.js' %}"></script>
     <title>Отзывы</title>
 </head>
 <body>
@@ -26,7 +28,12 @@
           <button type="submit" class="button">Отправить</button>
         </form>
         {% else %}
-        <p>Чтобы оставить отзыв, необходимо <a class="buttonBack" href="{% url 'register' %}">зарегистрироваться</a>
+        <p style="display: flex; flex-direction: column; align-items: flex-start;">
+  Чтобы оставить отзыв, необходимо
+  <a class="buttonBack" href="{% url 'register' %}" style="align-self: flex-start; margin-top: 50px;">
+    зарегистрироваться
+  </a>
+</p>
         {% endif %}
         <hr>
         {% for review in reviews %}
@@ -38,13 +45,72 @@
         {% endfor %}
         {% endblock %}
     
+<!--<form id="rating-form" method="POST" action="{% url 'ban' %}">-->
+<!--    {% csrf_token %}-->
+<!--    <select class="star-rating" id="rating" name="rating">-->
+<!--      <option value=""></option>-->
+<!--      <option value="1">1</option>-->
+<!--      <option value="2">2</option>-->
+<!--      <option value="3">3</option>-->
+<!--      <option value="4">4</option>-->
+<!--      <option value="5">5</option>-->
+<!--    </select>-->
+<!--    <input type="submit" value="Оценить" class="button">-->
+<!--  </form>-->
 
         <div class="buttonsBack">
-            <a class="buttonBack" href="{% url 'daily' %}">Рассписание дня</a>
-            <a class="buttonBack" href="{% url 'rules' %}">Правила</a>
             <a class="buttonBack" href="{% url 'home' %}">Главная</a>
         </div>
     </div>
+
+<!--      <script>-->
+<!--  $(function() {-->
+<!--    $('.star-rating').barrating({-->
+<!--      theme: 'fontawesome-stars',-->
+<!--      onSelect: function(value, text, event) {-->
+<!--        if (typeof(event) !== 'undefined') {-->
+<!--          // значение оценки записывается в localStorage-->
+<!--          localStorage.setItem('rating', value);-->
+<!--        }-->
+<!--      }-->
+<!--    });-->
+<!--  });-->
+<!--</script>-->
+
+<!--      <script>-->
+<!--  $(function() {-->
+<!--    $('.star-rating').barrating({-->
+<!--      theme: 'fontawesome-stars',-->
+<!--      onSelect: function(value, text, event) {-->
+<!--        if (typeof(event) !== 'undefined') {-->
+<!--          // значение оценки записывается в localStorage-->
+<!--          localStorage.setItem('rating', value);-->
+<!--        }-->
+<!--      }-->
+<!--    });-->
+
+<!--    $('#rating-form').submit(function(e) {-->
+<!--      e.preventDefault();-->
+<!--      // отправка данных из localStorage на сервер-->
+<!--      $.ajax({-->
+<!--        url: '{% url 'ban' %}',-->
+<!--        method: 'POST',-->
+<!--        data: {-->
+<!--          'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),-->
+<!--          'rating': localStorage.getItem('rating')-->
+<!--        },-->
+<!--        success: function(response) {-->
+<!--          // сервер ответил успешно, можно что-то сделать-->
+<!--          console.log(response);-->
+<!--        },-->
+<!--        error: function(error) {-->
+<!--          // ошибка отправки данных на сервер-->
+<!--          console.error(error);-->
+<!--        }-->
+<!--      });-->
+<!--    });-->
+<!--  });-->
+<!--</script>-->
 
 <script>
        if ('serviceWorker' in navigator) {

@@ -18,24 +18,24 @@
  <header>
     Добрый день, {{ user.username }} , это ваше расписание
     {% endif %}</header>
-{% for weekday, schedules in weekday_schedules.items %}
-<div class="dayWeek">{{ weekday.title }}</div>
+{% for деньнедели , schedules in ежедневноерасписание.items %}
+<div class="dayWeek">{{ деньнедели }}</div>
   {% if schedules %}
   <div class="event">
       {% for schedule in schedules %}
-        {% if schedule.start_time and schedule.end_time %}
+        {% if schedule.время_начала and schedule.время_окончания %}
           <div class="oneRules">
-            {% if schedule.schedule %}
-            <div class="time">{{ schedule.start_time }}</div>
+            {% if schedule.расписание %}
+            <div class="time">{{ schedule.время_начала }}</div>
           </div>
           <div class="vertEvent">
             <div class="oneVert">
-            <div class="lo">{{ schedule.schedule }}</div>
+            <div class="lo">{{ schedule.расписание }}</div>
             {% else %}
-            <div class="start">{{ schedule.start_time }}</div>
+            <div class="start">{{ schedule.время_начала }}</div>
             {% endif %}
-            {% if schedule.description %}
-              <div class="place">( {{ schedule.description }} )</div>
+            {% if schedule.описание %}
+              <div class="place">( {{ schedule.описание }} )</div>
             {% endif %}
           </div>
           </div >
@@ -44,13 +44,10 @@
       {% endfor %}
         </div>
   {% else %}
-    <p>No schedule set for {{ weekday }}.</p>
+    <p>No schedule set for {{ деньнедели }}.</p>
   {% endif %}
 {% endfor %}
-
    <div class="buttonsBack">
-        <a class="buttonBack" href="{% url 'daily' %}">Рассписание дня</a>
-        <a class="buttonBack" href="{% url 'rules' %}">Правила</a>
         <a class="buttonBack" href="{% url 'home' %}">Главная</a>
     </div>
 <script>

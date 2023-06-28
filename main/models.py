@@ -13,25 +13,26 @@ from django import forms
 #     def __str__(self):
 #         return f'{self.weekday} - {self.user.username}'
 
-class UserDailySchedule(models.Model):
-    WEEKDAY_CHOICES = (
-        ('Понедельник', 'Понедельник'),
-        ('Вторник', 'Вторник'),
-        ('Среда', 'Среда'),
-        ('Четверг', 'Четверг'),
-        ('Пятница', 'Пятница'),
-        ('Суббота', 'Суббота'),
-        ('Воскресенье', 'Воскресенье'),
-    )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    schedule = models.CharField(max_length=200,  null=True)
-    weekday = models.CharField(max_length=11, choices=WEEKDAY_CHOICES)
-    start_time = models.DateTimeField(default=datetime.datetime(2023, 6, 21, 0, 0))
-    end_time = models.TimeField(default=datetime.time(0, 0), blank=True, null=True)
-    description = models.TextField( null=True)
+# class UserDailySchedule(models.Model):
+#     WEEKDAY_CHOICES = (
+#         ('Понедельник', 'Понедельник'),
+#         ('Вторник', 'Вторник'),
+#         ('Среда', 'Среда'),
+#         ('Четверг', 'Четверг'),
+#         ('Пятница', 'Пятница'),
+#         ('Суббота', 'Суббота'),
+#         ('Воскресенье', 'Воскресенье'),
+#     )
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     schedule = models.CharField(max_length=200,  null=True)
+#     weekday = models.CharField(max_length=11, choices=WEEKDAY_CHOICES)
+#     start_time = models.DateTimeField(default=datetime.datetime(2023, 6, 21, 0, 0))
+#     end_time = models.TimeField(default=datetime.time(0, 0), blank=True, null=True)
+#     description = models.TextField( null=True)
+#
+#     def str(self):
+#         return self.schedule
 
-    def str(self):
-        return self.schedule
 # class UserDailySchedule(models.Model):
 #     WEEKDAY_CHOICES = (
 #         ('понедельник', 'Понедельник'),
@@ -108,6 +109,10 @@ class Review(models.Model):
     def __str__(self):
         return f"Отзыв от {self.user.username} {self.user.last_name}"
 
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+
 class UserProfile(models.Model):
     user = models.OneToOneField(
         User,
@@ -117,32 +122,86 @@ class UserProfile(models.Model):
     )
     phone_number = models.CharField(max_length=30, blank=True, null=True)
 
+    class Meta:
+        verbose_name = 'пользователь'
+        verbose_name_plural = 'пользователи'
+
     def __str__(self):
         return f" {self.user.username} {self.user.first_name} {self.user.last_name}"
 
+# class Scheduledaily(models.Model):
+#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+#     day = models.IntegerField()
+#     start_time = models.TimeField()
+#     end_time = models.TimeField(blank=True, null=True)
+#     description = models.CharField(max_length=200)
+#
+#     WEEKDAY_CHOICES = [
+#         (0, 'Monday'),
+#         (1, 'Tuesday'),
+#         (2, 'Wednesday'),
+#         (3, 'Thursday'),
+#         (4, 'Friday'),
+#         (5, 'Saturday'),
+#         (6, 'Sunday')
+#     ]
+#
+#     weekday = models.IntegerField(choices=WEEKDAY_CHOICES)
+#
+#     def __str__(self):
+#         return self.description
+#
+#     class Meta:
+#         ordering = ('day', 'start_time')
 class Scheduledaily(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    day = models.IntegerField()
-    start_time = models.TimeField()
-    end_time = models.TimeField(blank=True, null=True)
-    description = models.CharField(max_length=200)
+    пользователь = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    день = models.IntegerField()
+    времяначала = models.TimeField()
+    времяокончания = models.TimeField(blank=True, null=True)
+    описание = models.CharField(max_length=200)
 
-    WEEKDAY_CHOICES = [
-        (0, 'Monday'),
-        (1, 'Tuesday'),
-        (2, 'Wednesday'),
-        (3, 'Thursday'),
-        (4, 'Friday'),
-        (5, 'Saturday'),
-        (6, 'Sunday')
+    ДНИНЕДЕЛИ = [
+        ('понедельник', 'Понедельник'),
+        ('вторник', 'Вторник'),
+        ('среда', 'Среда'),
+        ('четверг', 'Четверг'),
+        ('пятница', 'Пятница'),
+        ('суббота', 'Суббота'),
+        ('воскресенье', 'Воскресенье')
     ]
 
-    weekday = models.IntegerField(choices=WEEKDAY_CHOICES)
+    деньнедели = models.CharField(max_length=20, choices=ДНИНЕДЕЛИ, default='понедельник')
 
-    def __str__(self):
-        return self.description
+    def str(self):
+        return self.описание
 
     class Meta:
-        ordering = ('day', 'start_time')
+        ordering = ('день', 'времяначала')
 
+
+class Личноерасписание(models.Model):
+    # было ДНИ_НЕДЕЛИ
+    ДНИНЕДЕЛИ = [
+        ('понедельник', 'Понедельник'),
+        ('вторник', 'Вторник'),
+        ('среда', 'Среда'),
+        ('четверг', 'Четверг'),
+        ('пятница', 'Пятница'),
+        ('суббота', 'Суббота'),
+        ('воскресенье', 'Воскресенье')
+    ]
+
+    пользователь = models.ForeignKey(User, on_delete=models.CASCADE)
+    расписание = models.CharField(max_length=200, null=True)
+    деньнедели = models.CharField(max_length=20, choices=ДНИНЕДЕЛИ, default='понедельник')
+    время_начала = models.DateTimeField(default=datetime.datetime(2023, 6, 21, 0, 0))
+    время_окончания = models.TimeField(default=datetime.time(0, 0), blank=True, null=True)
+    описание = models.TextField(null=True)
+
+    def __str__(self):
+        return f'{self.пользователь} {self.пользователь.last_name} {self.деньнедели}'
+
+    class Meta:
+        verbose_name = 'Личное расписание'
+        verbose_name_plural = 'Личное расписание'
 

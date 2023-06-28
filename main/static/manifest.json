@@ -1,7 +1,7 @@
 {
     "name": "Pain Tracker",
     "short_name": "paintracker",
-    "start_url": "https://5048-178-127-224-42.ngrok-free.app",
+    "start_url": "https://2de2-178-127-159-65.ngrok-free.app",
     "scope": "/",
     "display": "standalone",
     "background_color": "#FFF",

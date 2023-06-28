@@ -47,6 +47,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    # 'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'corsheaders',
+
 
 ]
 
@@ -158,19 +159,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'main', 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://5048-178-127-224-42.ngrok-free.app',
-    'https://5048-178-127-224-42.ngrok-free.app/ban',
-    'https://5048-178-127-224-42.ngrok-free.app/base',
-    'https://5048-178-127-224-42.ngrok-free.app/register',
-    'https://5048-178-127-224-42.ngrok-free.app/daily',
-    'https://5048-178-127-224-42.ngrok-free.app/link',
-    'https://5048-178-127-224-42.ngrok-free.app/login',
-    'https://5048-178-127-224-42.ngrok-free.app/login/',
-    'https://5048-178-127-224-42.ngrok-free.app/map',
-    'https://5048-178-127-224-42.ngrok-free.app/posters',
-    'https://5048-178-127-224-42.ngrok-free.app/rules',
-    'https://5048-178-127-224-42.ngrok-free.app/review',
-    'https://5048-178-127-224-42.ngrok-free.app/schedule-view'
+    'https://2de2-178-127-159-65.ngrok-free.app',
+    'https://2de2-178-127-159-65.ngrok-free.app/ban',
+    'https://2de2-178-127-159-65.ngrok-free.app/base',
+    'https://2de2-178-127-159-65.ngrok-free.app/register',
+    'https://2de2-178-127-159-65.ngrok-free.app/daily',
+    'https://2de2-178-127-159-65.ngrok-free.app/link',
+    'https://2de2-178-127-159-65.ngrok-free.app/login',
+    'https://2de2-178-127-159-65.ngrok-free.app/login/',
+    'https://2de2-178-127-159-65.ngrok-free.app/map',
+    'https://2de2-178-127-159-65.ngrok-free.app/posters',
+    'https://2de2-178-127-159-65.ngrok-free.app/rules',
+    'https://2de2-178-127-159-65.ngrok-free.app/review',
+    'https://2de2-178-127-159-65.ngrok-free.app/schedule-view'
 ]
 
 
