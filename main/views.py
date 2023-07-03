@@ -20,6 +20,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from main.forms import CustomUserCreationForm
 from .models import Личноерасписание
+from .forms import FeedbackForm
 from datetime import datetime
 
 
@@ -189,6 +190,22 @@ def расписаниепользователя(request, idпользовате
     context = {'расписания': расписания}
 
     return render(request, 'main/schedule-view.html', context)
+
+
+def feedbacks(request):
+    # Если форма отправлена, сохраняем данные
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            # Вы можете добавить код для редиректа пользователя на другую страницу после отправки формы, если требуется
+
+    else:
+        # Если форма не отправлена, создаем новую форму для отображения
+        form = FeedbackForm()
+
+    return render(request, 'main/feedbacks.html', {'form': form})
 
 class ServiceWorkerView(TemplateView):
     template_name = 'sw.js'

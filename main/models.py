@@ -102,10 +102,145 @@ class Zapret(models.Model):
 
 
 class Review(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    text = models.TextField()
-    date = models.DateTimeField(auto_now_add=True)
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь")
+    goal_choice = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('лечение', 'Лечение'),
+        ('оздоровление', 'Оздоровление'),
+        ('отдых', 'Отдых'),
+    ), default='', verbose_name="Цель выбора здравницы", null=True, blank=True)
+    visit_choice = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('впервые', 'Впервые'),
+        ('повторно', 'Повторно'),
+        ('более двух раз', 'Более двух раз'),
+    ), default='', verbose_name="Посещаете данную здравницу", null=True, blank=True)
+    istochnik = models.CharField(max_length=100, verbose_name="Источник", null=True, blank=True)
+    # istochnik = models.CharField(max_length=50, choices=(
+    #     ('', ''),
+    #     ('знакомые', 'Знакомые'),
+    #     ('реклама', 'Реклама'),
+    #     ('другой вариант', 'Другой вариант'),
+    # ), default='', verbose_name="Источник получения информации")
+    kak_preobletali = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('полная стоимость', 'Полная стоимость'),
+        ('льготная стоимость', 'Льготная стоимость'),
+    ), default='', verbose_name="Как приобретали путевку", null=True, blank=True)
+    gruppa = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('не имею', 'не имею'),
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+    ), default='', verbose_name="Группа ограничений трудоспособности", null=True, blank=True)
+    treatment_rating = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('1', '1 - Плохо'),
+        ('2', '2 - Удовлетворительно'),
+        ('3', '3 - Хорошо'),
+        ('4', '4 - Очень хорошо'),
+        ('5', '5 - Отлично'),
+    ), default='', verbose_name="Оценка качества лечения", null=True, blank=True)
+    service_rating = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('1', '1 - Плохо'),
+        ('2', '2 - Удовлетворительно'),
+        ('3', '3 - Хорошо'),
+        ('4', '4 - Очень хорошо'),
+        ('5', '5 - Отлично'),
+    ), default='', verbose_name="Оценка качества сервиса", null=True, blank=True)
+    projivanie = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('1', '1 - Плохо'),
+        ('2', '2 - Удовлетворительно'),
+        ('3', '3 - Хорошо'),
+        ('4', '4 - Очень хорошо'),
+        ('5', '5 - Отлично'),
+    ), default='', verbose_name="Оценка качества проживания", null=True, blank=True)
+    pitanie = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('1', '1 - Плохо'),
+        ('2', '2 - Удовлетворительно'),
+        ('3', '3 - Хорошо'),
+        ('4', '4 - Очень хорошо'),
+        ('5', '5 - Отлично'),
+    ), default='', verbose_name="Оценка качества питания", null=True, blank=True)
+    soc_deatel= models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('1', '1 - Плохо'),
+        ('2', '2 - Удовлетворительно'),
+        ('3', '3 - Хорошо'),
+        ('4', '4 - Очень хорошо'),
+        ('5', '5 - Отлично'),
+    ), default='', verbose_name="Оценка качества социокультурной деятельности", null=True, blank=True)
+    kval_med_pers = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('1', '1 - Плохо'),
+        ('2', '2 - Удовлетворительно'),
+        ('3', '3 - Хорошо'),
+        ('4', '4 - Очень хорошо'),
+        ('5', '5 - Отлично'),
+    ), default='', verbose_name="Оценка качества квалификации медицинского персонала", null=True, blank=True)
+    vrach = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('1', '1 - Плохо'),
+        ('2', '2 - Удовлетворительно'),
+        ('3', '3 - Хорошо'),
+        ('4', '4 - Очень хорошо'),
+        ('5', '5 - Отлично'),
+    ), default='', verbose_name="Оценка культуры обслуживания врачей", null=True, blank=True)
+    sred_med = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('1', '1 - Плохо'),
+        ('2', '2 - Удовлетворительно'),
+        ('3', '3 - Хорошо'),
+        ('4', '4 - Очень хорошо'),
+        ('5', '5 - Отлично'),
+    ), default='', verbose_name="Оценка культуры обслуживания среднего медицинского персонала", null=True, blank=True)
+    obsluj = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('1', '1 - Плохо'),
+        ('2', '2 - Удовлетворительно'),
+        ('3', '3 - Хорошо'),
+        ('4', '4 - Очень хорошо'),
+        ('5', '5 - Отлично'),
+    ), default='', verbose_name="Оценка культуры обсуживающего персонала", null=True, blank=True)
+    kak_v_celom = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('удовлетворительно', 'Удовлетворительно'),
+        ('хорошо', 'Хорошо'),
+        ('отлично', 'Отлично'),
+    ), default='', verbose_name="Как в целом Вы можете оценить впечатления от пребывания в санатории", null=True, blank=True)
+    kakova_ver = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('0', 'ни в коем случае'),
+        ('1', 'Вряд ли'),
+        ('2', 'Возможно'),
+        ('3', 'Скорее всего да'),
+        ('4', 'Расскажу конечно'),
+        ('5', 'обязательно порекомендую'),
+    ), default='', verbose_name="Какова вероятность что вы порекомендуете данную здравницу друзьям", null=True, blank=True)
+    opros = models.CharField(max_length=50, choices=(
+        ('', ''),
+        ('0', 'ни в коем случае'),
+        ('1', 'Вряд ли'),
+        ('2', 'Возможно'),
+        ('3', 'Скорее всего да'),
+        ('4', 'Расскажу конечно'),
+        ('5', 'обязательно порекомендую'),
+    ), default='', verbose_name="Какова вероятность что вы порекомендуете данную здравницу друзьям", null=True, blank=True)
+    age = models.PositiveIntegerField(verbose_name="Возраст", default=0, null=True,blank=True)
+    gender = models.CharField(max_length=1, choices=(('м', 'М'), ('ж', 'Ж'), ('', '')), verbose_name="Пол", default='', null=True, blank=True)
+    city = models.CharField(max_length=100, verbose_name="Город", default='', null=True, blank=True)
+    text = models.TextField(verbose_name="отзыв", null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True, verbose_name="дата")
+    # istochnik = models.CharField(max_length=50, choices=(
+    #     ('', ''),
+    #     ('знакомые', 'Знакомые'),
+    #     ('реклама', 'Реклама'),
+    #     ('другой вариант', 'Другой вариант'),
+    # ), default='')
     def __str__(self):
         return f"Отзыв от {self.user.username} {self.user.last_name}"
 
@@ -205,3 +340,13 @@ class Личноерасписание(models.Model):
         verbose_name = 'Личное расписание'
         verbose_name_plural = 'Личное расписание'
 
+
+class Feedback(models.Model):
+    CHOICES = (
+        ('лечение', 'Лечение'),
+        ('оздоровление', 'Оздоровление'),
+        ('отдых', 'Отдых'),
+    )
+
+    goal_choice = models.CharField(max_length=50, choices=CHOICES)
+    comment = models.TextField()
