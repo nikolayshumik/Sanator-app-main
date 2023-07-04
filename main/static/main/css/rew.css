@@ -71,7 +71,7 @@ input{
     padding: 10px 20px;
     margin: auto;
     text-align: center;
-    margin-left: 100px;
+     /* margin-left: 100px; */
 }
 textarea{
     margin-left: auto;

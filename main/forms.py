@@ -49,7 +49,7 @@ class CustomUserCreationForm(UserCreationForm):
 class ReviewForm(forms.ModelForm):
     istochnik = forms.CharField(
         max_length=100,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control ml-0'}),
         label='Назовите источник получения информации о данной здравнице',
         required=False # Make this field optional
     )
