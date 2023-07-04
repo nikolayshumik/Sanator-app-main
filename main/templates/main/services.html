@@ -11,15 +11,48 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<style>
+  table {
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 2px solid silver;
+    padding: 8px;
+    text-align: left;
+  }
+</style>
 <div class="mainGradient">
 
     <header>
         Услуги
     </header>
 
-    <div class="map">
-    Услуги санатория
+    <div class="mapp">
+        <table>
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Наименование платной медицинской услуги</th>
+      <th>Описание процедуры</th>
+      <th>Ед измерения</th>
+      <th>Стоимость услуги в рублях</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for услуга in услуги %}
+      <tr>
+        <td>{{ forloop.counter|default:"" }}</td>
+        <td>{{ услуга.название|default:"" }}</td>
+        <td>{{ услуга.описание|default:"" }}</td>
+        <td>{{ услуга.едизмерения|default:"" }}</td>
+        <td>{{ услуга.цена|default:"" }}</td>
+      </tr>
+      <tr>
+        <td colspan="5" style="text-align: center;">{{ услуга.дополнительная_информация|default:"" }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
     </div>
 
 

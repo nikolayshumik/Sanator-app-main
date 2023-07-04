@@ -20,6 +20,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from main.forms import CustomUserCreationForm
 from .models import Личноерасписание
+from .models import Услуга
 from .forms import FeedbackForm
 from datetime import datetime
 
@@ -61,7 +62,8 @@ def map(request):
     return render(request, 'main/map.html')
 
 def services(request):
-    return render(request, 'main/services.html')
+    услуги = Услуга.objects.all()
+    return render(request, 'main/services.html', {'услуги': услуги})
 # рабочая админ панель
 def register_view(request):
     if request.method == 'POST':
