@@ -341,6 +341,24 @@ class Личноерасписание(models.Model):
         verbose_name_plural = 'Личное расписание'
 
 
+class Услуга(models.Model):
+    номер = models.IntegerField(blank=True, null=True)
+    название = models.CharField(max_length=300, blank=True, null=True)
+    описание = models.TextField(blank=True, null=True)
+    ед_измерения = models.CharField(max_length=50, blank=True, null=True)
+    цена = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
+    дополнительная_информация = models.TextField(blank=True, null=True)
+    ваше_назв = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        номер = str(self.номер) if self.номер is not None else ""
+        название = self.название if self.название is not None else ""
+
+        if self.ваше_назв is not None:
+            return self.ваше_назв
+        else:
+            return f'{номер} {название}'
+
 class Feedback(models.Model):
     CHOICES = (
         ('лечение', 'Лечение'),
