@@ -357,7 +357,7 @@ class Услуга(models.Model):
         if self.ваше_назв is not None:
             return self.ваше_назв
         else:
-            return f'{номер} {название}'
+            return f'{номер}.{название}'
 
 class Feedback(models.Model):
     CHOICES = (
