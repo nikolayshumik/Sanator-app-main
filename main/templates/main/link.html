@@ -11,22 +11,59 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+<header>
+    <h1 class="headert">Связь</h1>
+</header>
 
-<div class="mainGradient">
-
-    <header>
-        Связь
-    </header>
-    
-    <div class="map">
-    Контактные данные
+<div class="mainGradientt">
+    <div class="mapt">
+        <ul>
+            {% for link in links %}
+            <li>
+                <h3 style="text-align: {% if link.title %}left{% else %}center{% endif %};">{{ link.title|default:"" }}</h3>
+                <p style="text-align: left;">{{ link.content|default:"" }}</p>
+                <p style="text-align: left;">{{ link.tel1|default:"" }}</p>
+                <p style="text-align: left;">{{ link.tel2|default:"" }}</p>
+                <p style="text-align: left;">{{ link.tel3|default:"" }}</p>
+            </li>
+            {% endfor %}
+        </ul>
     </div>
 
-
-    <div class="buttonsBack">:
+    <div class="buttonsBack">
         <a class="buttonBack" href="{% url 'home' %}">Главная</a>
     </div>
 </div>
+
+<style>
+    .mainGradientt {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .mapt {
+        margin-top: 20px; /* Adjust as needed */
+    }
+
+    h3 {
+        text-align: left;
+    }
+ header .headert {
+        left: 0;
+        right: 0;
+        text-align: center;
+        background: #00BA7A;
+        border: 0;
+        border-radius: 10px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        color: white;
+    }
+</style>
 <script>
        if ('serviceWorker' in navigator) {
            navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {

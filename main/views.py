@@ -21,6 +21,7 @@ from django.shortcuts import render, redirect
 from main.forms import CustomUserCreationForm
 from .models import Личноерасписание
 from .models import Услуга
+from .models import Links
 from .forms import FeedbackForm
 from datetime import datetime
 
@@ -50,9 +51,9 @@ def posters(request):
 
 
 def link(request):
-    # zapret = Zapret.objects.all()
-    return render(request, 'main/link.html')
-    # {'zapret': zapret})
+    links = Links.objects.all()
+    return render(request, 'main/link.html', {'links': links})
+
 
 def ban(request):
     zapret = Zapret.objects.all()
