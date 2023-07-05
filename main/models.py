@@ -221,15 +221,15 @@ class Review(models.Model):
         ('4', 'Расскажу конечно'),
         ('5', 'обязательно порекомендую'),
     ), default='', verbose_name="Какова вероятность что вы порекомендуете данную здравницу друзьям", null=True, blank=True)
-    opros = models.CharField(max_length=50, choices=(
-        ('', ''),
-        ('0', 'ни в коем случае'),
-        ('1', 'Вряд ли'),
-        ('2', 'Возможно'),
-        ('3', 'Скорее всего да'),
-        ('4', 'Расскажу конечно'),
-        ('5', 'обязательно порекомендую'),
-    ), default='', verbose_name="Какова вероятность что вы порекомендуете данную здравницу друзьям", null=True, blank=True)
+    # opros = models.CharField(max_length=50, choices=(
+    #     ('', ''),
+    #     ('0', 'ни в коем случае'),
+    #     ('1', 'Вряд ли'),
+    #     ('2', 'Возможно'),
+    #     ('3', 'Скорее всего да'),
+    #     ('4', 'Расскажу конечно'),
+    #     ('5', 'обязательно порекомендую'),
+    # ), default='', verbose_name="Какова вероятность что вы порекомендуете данную здравницу друзьям", null=True, blank=True)
     age = models.PositiveIntegerField(verbose_name="Возраст", default=0, null=True,blank=True)
     gender = models.CharField(max_length=1, choices=(('м', 'М'), ('ж', 'Ж'), ('', '')), verbose_name="Пол", default='', null=True, blank=True)
     city = models.CharField(max_length=100, verbose_name="Город", default='', null=True, blank=True)
@@ -359,6 +359,13 @@ class Услуга(models.Model):
         else:
             return f'{номер}.{название}'
 
+
+class Links(models.Model):
+    title = models.CharField('ФИО Должность', max_length=100, blank=True, null=True)
+    content = models.TextField('Режим работы', blank=True, null=True)
+    tel1 = models.CharField('телефон1', max_length=100, blank=True, null=True)
+    tel2 = models.CharField('телефон2', max_length=100, blank=True, null=True)
+    tel3 = models.CharField('Название3', max_length=100, blank=True, null=True)
 class Feedback(models.Model):
     CHOICES = (
         ('лечение', 'Лечение'),

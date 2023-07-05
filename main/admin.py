@@ -7,6 +7,7 @@ from .models import Review
 from .models import UserProfile
 from .models import Личноерасписание
 from .models import Услуга
+from .models import Links
 
 from django.contrib.auth.admin import UserAdmin
 
@@ -56,6 +57,7 @@ admin.site.register(Zapret)
 admin.site.register(Rasporiadok)
 admin.site.register(Review)
 admin.site.register(Услуга)
+admin.site.register(Links)
 admin.site.register(UserProfile)
 
 
