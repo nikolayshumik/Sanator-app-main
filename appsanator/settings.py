@@ -159,19 +159,20 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'main', 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://2de2-178-127-159-65.ngrok-free.app',
-    'https://2de2-178-127-159-65.ngrok-free.app/ban',
-    'https://2de2-178-127-159-65.ngrok-free.app/base',
-    'https://2de2-178-127-159-65.ngrok-free.app/register',
-    'https://2de2-178-127-159-65.ngrok-free.app/daily',
-    'https://2de2-178-127-159-65.ngrok-free.app/link',
-    'https://2de2-178-127-159-65.ngrok-free.app/login',
-    'https://2de2-178-127-159-65.ngrok-free.app/login/',
-    'https://2de2-178-127-159-65.ngrok-free.app/map',
-    'https://2de2-178-127-159-65.ngrok-free.app/posters',
-    'https://2de2-178-127-159-65.ngrok-free.app/rules',
-    'https://2de2-178-127-159-65.ngrok-free.app/review',
-    'https://2de2-178-127-159-65.ngrok-free.app/schedule-view'
+    'https://4b10-178-127-239-109.ngrok-free.app',
+    'https://4b10-178-127-239-109.ngrok-free.app/ban',
+    'https://4b10-178-127-239-109.ngrok-free.app/base',
+    'https://4b10-178-127-239-109.ngrok-free.app/register',
+    'https://4b10-178-127-239-109.ngrok-free.app/daily',
+    'https://4b10-178-127-239-109.ngrok-free.app/link',
+    'https://4b10-178-127-239-109.ngrok-free.app/login',
+    'https://4b10-178-127-239-109.ngrok-free.app/login/',
+    'https://4b10-178-127-239-109.ngrok-free.app/map',
+    'https://4b10-178-127-239-109.ngrok-free.app/posters',
+    'https://4b10-178-127-239-109.ngrok-free.app/rules',
+    'https://4b10-178-127-239-109.ngrok-free.app/review',
+    'https://4b10-178-127-239-109.ngrok-free.app/schedule-view'
+    'https://4b10-178-127-239-109.ngrok-free.app/services'
 ]
 
 

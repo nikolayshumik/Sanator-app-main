@@ -1,7 +1,7 @@
 {
     "name": "Pain Tracker",
     "short_name": "paintracker",
-    "start_url": "https://2de2-178-127-159-65.ngrok-free.app",
+    "start_url": "https://4b10-178-127-239-109.ngrok-free.app",
     "scope": "/",
     "display": "standalone",
     "background_color": "#FFF",
@@ -9,5 +9,14 @@
     "description": "Test app for Django and PWA",
     "dir": "ltr",
     "lang": "en-US",
-    "orientation": "portrait-primary"
+    "orientation": "portrait-primary",
+    "icons": [{
+        "src": "/static/icons/aurss.96x96.png",
+        "type": "image/png",
+        "sizes": "96x96"
+    }, {
+        "src": "/static/icons/aurss.512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+    }]
 }

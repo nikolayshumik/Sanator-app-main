@@ -27,11 +27,14 @@
 
 
 
+<!--    <div class="buttonsBack">-->
+<!--        <a class="buttonBack" href="{% url 'home' %}">Главная</a>-->
+<!--    </div>-->
+            </div>
+</div>
     <div class="buttonsBack">
         <a class="buttonBack" href="{% url 'home' %}">Главная</a>
     </div>
-            </div>
-</div>
 <script>
        if ('serviceWorker' in navigator) {
            navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
