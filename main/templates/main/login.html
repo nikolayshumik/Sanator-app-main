@@ -22,6 +22,9 @@
     <button class="button" type="submit">Log in</button>
 </form>
 {% endblock %}
+<div class="buttonsBack" style="margin-top: 60px;">
+    <a class="buttonBack" href="{% url 'home' %}">Главная</a>
+</div>
 <script>
        if ('serviceWorker' in navigator) {
            navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
