@@ -233,6 +233,7 @@ class Review(models.Model):
     age = models.PositiveIntegerField(verbose_name="Возраст", default=0, null=True,blank=True)
     gender = models.CharField(max_length=1, choices=(('м', 'М'), ('ж', 'Ж'), ('', '')), verbose_name="Пол", default='', null=True, blank=True)
     city = models.CharField(max_length=100, verbose_name="Город", default='', null=True, blank=True)
+    rating = models.CharField(max_length=6, choices=(('', ''), ('★☆☆☆☆', '1★'), ('★★☆☆☆', '2★'),('★★★☆☆', '3★'), ('★★★★☆', '4★'), ('★★★★★', '5★')), verbose_name="Оценка", default='',null=True, blank=True)
     text = models.TextField(verbose_name="отзыв", null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True, verbose_name="дата")
     # istochnik = models.CharField(max_length=50, choices=(
