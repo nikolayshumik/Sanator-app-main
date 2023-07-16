@@ -36,81 +36,33 @@
 </p>
         {% endif %}
         <hr>
-        {% for review in reviews %}
-        <div class="comment">
-        <div class="commentTitle">{{ review.user.username }} <small>{{ review.date }}</small></div>
-        <div class="commentText">{{ review.text }}</div>
-      </div>
 
-        {% endfor %}
+       {% for review in reviews %}
+  {% if review.text %}
+    <div class="comment">
+      <div class="commentTitle">{{ review.user.username }} <small>{{ review.date }}</small></div>
+      <div class="commentText">{{ review.text }}</div>
+      {% if review.rating %}
+        <div class="commentText">{{ review.rating }}</div>
+      {% endif %}
+    </div>
+  {% elif review.rating %}
+    <div class="comment">
+      <div class="commentTitle">{{ review.user.username }} <small>{{ review.date }}</small></div>
+      <div class="commentText">{{ review.rating }}</div>
+    </div>
+  {% endif %}
+{% endfor %}
         {% endblock %}
+
+
     
-<!--<form id="rating-form" method="POST" action="{% url 'ban' %}">-->
-<!--    {% csrf_token %}-->
-<!--    <select class="star-rating" id="rating" name="rating">-->
-<!--      <option value=""></option>-->
-<!--      <option value="1">1</option>-->
-<!--      <option value="2">2</option>-->
-<!--      <option value="3">3</option>-->
-<!--      <option value="4">4</option>-->
-<!--      <option value="5">5</option>-->
-<!--    </select>-->
-<!--    <input type="submit" value="Оценить" class="button">-->
-<!--  </form>-->
+
 
         <div class="buttonsBack">
             <a class="buttonBack" href="{% url 'home' %}">Главная</a>
         </div>
     </div>
-
-<!--      <script>-->
-<!--  $(function() {-->
-<!--    $('.star-rating').barrating({-->
-<!--      theme: 'fontawesome-stars',-->
-<!--      onSelect: function(value, text, event) {-->
-<!--        if (typeof(event) !== 'undefined') {-->
-<!--          // значение оценки записывается в localStorage-->
-<!--          localStorage.setItem('rating', value);-->
-<!--        }-->
-<!--      }-->
-<!--    });-->
-<!--  });-->
-<!--</script>-->
-
-<!--      <script>-->
-<!--  $(function() {-->
-<!--    $('.star-rating').barrating({-->
-<!--      theme: 'fontawesome-stars',-->
-<!--      onSelect: function(value, text, event) {-->
-<!--        if (typeof(event) !== 'undefined') {-->
-<!--          // значение оценки записывается в localStorage-->
-<!--          localStorage.setItem('rating', value);-->
-<!--        }-->
-<!--      }-->
-<!--    });-->
-
-<!--    $('#rating-form').submit(function(e) {-->
-<!--      e.preventDefault();-->
-<!--      // отправка данных из localStorage на сервер-->
-<!--      $.ajax({-->
-<!--        url: '{% url 'ban' %}',-->
-<!--        method: 'POST',-->
-<!--        data: {-->
-<!--          'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),-->
-<!--          'rating': localStorage.getItem('rating')-->
-<!--        },-->
-<!--        success: function(response) {-->
-<!--          // сервер ответил успешно, можно что-то сделать-->
-<!--          console.log(response);-->
-<!--        },-->
-<!--        error: function(error) {-->
-<!--          // ошибка отправки данных на сервер-->
-<!--          console.error(error);-->
-<!--        }-->
-<!--      });-->
-<!--    });-->
-<!--  });-->
-<!--</script>-->
 
 <script>
        if ('serviceWorker' in navigator) {
