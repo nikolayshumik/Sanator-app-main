@@ -62,6 +62,13 @@ class ReviewForm(forms.ModelForm):
 
     )
     city = forms.CharField(label="Город", required=False)
+    rating = forms.ChoiceField(
+        choices=(('', ''), ('★☆☆☆☆', '1★'), ('★★☆☆☆', '2★'),('★★★☆☆', '3★'), ('★★★★☆', '4★'), ('★★★★★', '5★')),
+        # widget=forms.RadioSelect,
+        label="Оценка",
+        required=False
+
+    )
     text = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'class': 'form-control'}),label='Ваши пожелания', required=False)
 
     class Meta:
@@ -85,6 +92,7 @@ class ReviewForm(forms.ModelForm):
                   'age',
                   'gender',
                   'city',
+                  'rating',
                   'text',]
         labels = {
             'goal_choice': 'Цель выбора здравницы',
@@ -106,6 +114,7 @@ class ReviewForm(forms.ModelForm):
             'age': 'Возраст',
             'gender': 'Пол',
             'city': 'Город',
+            'rating': 'Оценка',
             'text': '',
         }
 
