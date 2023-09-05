@@ -8,6 +8,7 @@ right: 0;
 text-align: center;
 background: #00BA7A;
 border: 0;
+font-family: "Lobster";
 border-radius: 10px;
 padding: 10px 20px;
 font-style: normal;
@@ -37,8 +38,10 @@ padding: 10px 10px 20px 10px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-family: "Lobster";
 }
 .buttonBack{
+font-family: "Lobster";
 margin-left: auto;
 margin-right: auto;
 white-space: nowrap;
@@ -67,6 +70,11 @@ font-weight: 500;
 font-size: 22px;
 width: 40%;
 white-space: nowrap;
+}
+.quest{
+    text-transform: uppercase; 
+    font-weight: 400;
+    font-size: 30px;
 }
 .event{
 margin:10px 15px 10px 15px;
@@ -136,9 +144,9 @@ border-radius: 10px;
 border: 0;
 padding: 10px 20px;
 font-style: normal;
-line-height: 20px;
 letter-spacing: 0.1px;
 color: #FFFFFF;
+font-family: "Lobster";
 }
 .buttonA{
     position: absolute;
@@ -203,7 +211,7 @@ padding: 10px 15px;
     display : flex;
     align-items : center;
     justify-content: center;
-    height: 100vw;
+    height: 150vw;
     border-radius: 10%;
     background-color: white;
     margin-top: 10px;
@@ -216,7 +224,7 @@ padding: 10px 15px;
     display : flex;
     /*align-items : center;*/
     /*justify-content: center;*/
-    height: 100vw;
+    height: 150vw;
     /*border-radius: 10%;*/
     background-color: white;
     margin-top: 10px;

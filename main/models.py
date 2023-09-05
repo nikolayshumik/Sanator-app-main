@@ -54,10 +54,8 @@ from django import forms
 #         return self.schedule
 
 
-
 class Rools(models.Model):
     title = models.CharField('Название', max_length=300)
-    
 
     def __str__(self):
         return self.title
@@ -89,7 +87,8 @@ class Posters(models.Model):
     class Meta:
         verbose_name = 'Афиша'
         verbose_name_plural = 'Афиши'
-        
+
+
 class Zapret(models.Model):
     title = models.CharField('Название', max_length=300)
 
@@ -166,7 +165,7 @@ class Review(models.Model):
         ('4', '4 - Очень хорошо'),
         ('5', '5 - Отлично'),
     ), default='', verbose_name="Оценка качества питания", null=True, blank=True)
-    soc_deatel= models.CharField(max_length=50, choices=(
+    soc_deatel = models.CharField(max_length=50, choices=(
         ('', ''),
         ('1', '1 - Плохо'),
         ('2', '2 - Удовлетворительно'),
@@ -211,7 +210,8 @@ class Review(models.Model):
         ('удовлетворительно', 'Удовлетворительно'),
         ('хорошо', 'Хорошо'),
         ('отлично', 'Отлично'),
-    ), default='', verbose_name="Как в целом Вы можете оценить впечатления от пребывания в санатории", null=True, blank=True)
+    ), default='', verbose_name="Как в целом Вы можете оценить впечатления от пребывания в санатории", null=True,
+                                   blank=True)
     kakova_ver = models.CharField(max_length=50, choices=(
         ('', ''),
         ('0', 'ни в коем случае'),
@@ -220,7 +220,8 @@ class Review(models.Model):
         ('3', 'Скорее всего да'),
         ('4', 'Расскажу конечно'),
         ('5', 'обязательно порекомендую'),
-    ), default='', verbose_name="Какова вероятность что вы порекомендуете данную здравницу друзьям", null=True, blank=True)
+    ), default='', verbose_name="Какова вероятность что вы порекомендуете данную здравницу друзьям", null=True,
+                                  blank=True)
     # opros = models.CharField(max_length=50, choices=(
     #     ('', ''),
     #     ('0', 'ни в коем случае'),
@@ -230,12 +231,16 @@ class Review(models.Model):
     #     ('4', 'Расскажу конечно'),
     #     ('5', 'обязательно порекомендую'),
     # ), default='', verbose_name="Какова вероятность что вы порекомендуете данную здравницу друзьям", null=True, blank=True)
-    age = models.PositiveIntegerField(verbose_name="Возраст", default=0, null=True,blank=True)
-    gender = models.CharField(max_length=1, choices=(('м', 'М'), ('ж', 'Ж'), ('', '')), verbose_name="Пол", default='', null=True, blank=True)
+    age = models.PositiveIntegerField(verbose_name="Возраст", default=0, null=True, blank=True)
+    gender = models.CharField(max_length=1, choices=(('м', 'М'), ('ж', 'Ж'), ('', '')), verbose_name="Пол", default='',
+                              null=True, blank=True)
     city = models.CharField(max_length=100, verbose_name="Город", default='', null=True, blank=True)
-    rating = models.CharField(max_length=6, choices=(('', ''), ('★☆☆☆☆', '1★'), ('★★☆☆☆', '2★'),('★★★☆☆', '3★'), ('★★★★☆', '4★'), ('★★★★★', '5★')), verbose_name="Оценка", default='',null=True, blank=True)
+    rating = models.CharField(max_length=6, choices=(
+    ('', ''), ('★☆☆☆☆', '1★'), ('★★☆☆☆', '2★'), ('★★★☆☆', '3★'), ('★★★★☆', '4★'), ('★★★★★', '5★')),
+                              verbose_name="Оценка", default='', null=True, blank=True)
     text = models.TextField(verbose_name="отзыв", null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True, verbose_name="дата")
+
     # istochnik = models.CharField(max_length=50, choices=(
     #     ('', ''),
     #     ('знакомые', 'Знакомые'),
@@ -248,6 +253,7 @@ class Review(models.Model):
     class Meta:
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(
@@ -264,6 +270,7 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f" {self.user.username} {self.user.first_name} {self.user.last_name}"
+
 
 # class Scheduledaily(models.Model):
 #     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -367,6 +374,8 @@ class Links(models.Model):
     tel1 = models.CharField('телефон1', max_length=100, blank=True, null=True)
     tel2 = models.CharField('телефон2', max_length=100, blank=True, null=True)
     tel3 = models.CharField('Название3', max_length=100, blank=True, null=True)
+
+
 class Feedback(models.Model):
     CHOICES = (
         ('лечение', 'Лечение'),

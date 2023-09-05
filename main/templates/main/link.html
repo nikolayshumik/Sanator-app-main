@@ -8,62 +8,31 @@
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css'%}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-    <h1 class="headert">Связь</h1>
-</header>
 
-<div class="mainGradientt">
-    <div class="mapt">
-        <ul>
+<header>Связь</header>
+
+<div class="mainGradientt" style="font-family: 'IBM Plex Sans'; padding: 10px 20px; font-size: 25px;">
+
+
+            <div class='quest'>Возник вопрос? Звоните нам!</div>
             {% for link in links %}
-            <li>
-                <h3 style="text-align: {% if link.title %}left{% else %}center{% endif %};">{{ link.title|default:"" }}</h3>
-                <p style="text-align: left;">{{ link.content|default:"" }}</p>
-                <p style="text-align: left;">{{ link.tel1|default:"" }}</p>
-                <p style="text-align: left;">{{ link.tel2|default:"" }}</p>
-                <p style="text-align: left;">{{ link.tel3|default:"" }}</p>
-            </li>
+            <div style="font-weight: 600; margin-top: 6%;">{{ link.title|default:"" }}</div>
+            <div style="text-align: left; font-size: 23px; margin-top: 3%; margin-bottom: 3%;">{{ link.content|default:"" }}</div>
+            <a style="color: #3F92D2; font-size: 23px;" href=`tel:{{ link.tel1|default:"" }}`>{{ link.tel1|default:"" }}</a>
+            <a style="color: #3F92D2; font-size: 23px;" href=`tel:{{ link.tel2|default:"" }}`>{{ link.tel2|default:"" }}</a>
+            <a style="color: #3F92D2; font-size: 23px;" href=`tel:{{ link.tel3|default:"" }}`>{{ link.tel3|default:"" }}</a>
             {% endfor %}
-        </ul>
-    </div>
 
-    <div class="buttonsBack">
+            <img src="../../../static/main/assets/фонсвязи.png" />
+
+    <div class="buttonsBack" style="margin-top: -5%;">
         <a class="buttonBack" href="{% url 'home' %}">Главная</a>
     </div>
 </div>
 
-<style>
-    .mainGradientt {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .mapt {
-        margin-top: 20px; /* Adjust as needed */
-    }
-
-    h3 {
-        text-align: left;
-    }
- header .headert {
-        left: 0;
-        right: 0;
-        text-align: center;
-        background: #00BA7A;
-        border: 0;
-        border-radius: 10px;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 17px;
-        color: white;
-    }
-</style>
 <script>
        if ('serviceWorker' in navigator) {
            navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
@@ -78,3 +47,6 @@
 </script>
 </body>
 </html>
+
+
+

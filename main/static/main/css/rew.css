@@ -5,6 +5,7 @@ body{
 header{
 left: 0;
 right: 0;
+font-family: "Lobster";
 text-align: center;
 background: #00BA7A;
 border: 0;
@@ -55,7 +56,8 @@ label{
     flex-direction: column;
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 20px;
+    margin-bottom: 5px;
     line-height: 20px;
     letter-spacing: 0.2px;
     color: #66727F;
@@ -66,10 +68,14 @@ form{
     margin-left: auto;
     margin-right: auto;
 }
+small{
+    font-size: 18px; 
+}
 input{
-    font-size: 16px;
+    font-size: 20px;
     padding: 10px 20px;
     margin: auto;
+    border: 1px solid #ccc;
     text-align: center;
      /* margin-left: 100px; */
 }
@@ -77,13 +83,16 @@ textarea{
     margin-left: auto;
     margin-right: auto;
     resize: none;
+    border: 1px solid #ccc;
 }
 .commentTitle{
     display: flex;
     justify-content: space-between;
     align-items: center;
+font-size: 18px; 
 }
 .comment{
+    font-size: 18px;
     margin: 10px;
     font-family: 'IBM Plex Sans';
     margin-top: 7px;
@@ -95,13 +104,24 @@ textarea{
     background-color: #CEF3FF;
 }
 .buttonsBack{
+    font-family: "Lobster";
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+select{
+    width: 50%;
+    border: 0px;
+    height: 30px;
+    font-size: 16px;
+}
+option{
+    font-size: 16px;
+}
 .buttonBack{
+font-family: "Lobster";
 white-space: nowrap;
 width:220px;
 font-size: 20px;
@@ -125,12 +145,17 @@ text-align: center;
         margin-bottom: 10px;
     }
     label{
-        font-size: 20px;
-        
+        font-size: 23px;
+       line-height: 1; 
     }
     form{
         font-size: 15px;
-
+    }
+    select{
+        width: 50%;
+        border: 0px;
+        height: 30px;
+        font-size: 16px;
     }
     input{
         margin-top: 7px;

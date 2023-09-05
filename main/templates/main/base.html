@@ -11,29 +11,49 @@
     <link rel="stylesheet" href="{% static 'main/css/Main-page.css'%}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
       {% block content %}
       {% endblock %}
 <div class="mainDiv">
-      <div class="campTitle">Название санатория</div>
-      <div class="welcomeText">Добро пожаловать</div>
-      <div class="login"><a class="btn" href="{% url 'register' %}">Регистрация</a></div>
+  <div class="campTitle">Название санатория</div>
+  <div class="welcomeText">Добро пожаловать</div>
 
-      <div class="allLinks">
-      <div class="link"><a href="{% url 'rules' %}">Правила для отдыхающих</a></div>
-          {% if user.is_authenticated %}
+  {% if user.is_authenticated %}
+    <div class="loginus">
+      <a class="btn" href="#"> </a>
+    </div>
+  {% else %}
+    <div class="login">
+      <a class="btn" href="{% url 'register' %}">Регистрация</a>
+    </div>
+  {% endif %}
+
+  <div class="allLinks">
+    <div class="link"><a href="{% url 'rules' %}">Правила для отдыхающих</a></div>
+
+    {% if user.is_authenticated %}
       <div class="link"><a href="{% url 'daily-view' %}">Санаторно-курортная книжка</a></div>
-          {% endif %}
-      <div class="link"><a href="{% url 'services' %}">Услуги</a></div>
-      <div class="link"><a href="{% url 'map' %}">Схема</a></div>
-      <div class="link"><a href="{% url 'posters' %}">Афиша</a></div>
-      <div class="link"><a href="{% url 'link' %}">Связь</a></div>
-      <div class="link"><a href="{% url 'review' %}">Отзывы</a></div>
+    {% endif %}
 
-      </div>
+    <div class="link"><a href="{% url 'services' %}">Услуги</a></div>
+    <div class="link"><a href="{% url 'map' %}">Схема</a></div>
+    <div class="link"><a href="{% url 'posters' %}">Афиша</a></div>
+    <div class="link"><a href="{% url 'link' %}">Связь</a></div>
+
+    {% if not user.is_authenticated %}
+      <div class="link"><a href="{% url 'review' %}">Отзывы</a></div>
+    {% endif %}
+  </div>
+
+  {% if user.is_authenticated %}
+    <div class="linkus center"><a href="{% url 'review' %}">Отзывы</a></div>
+  {% endif %}
 </div>
+
+
+
 <script>
        if ('serviceWorker' in navigator) {
            navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {

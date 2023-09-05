@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Lobster&display=swap" rel="stylesheet"></head>
 
 <body>
 
@@ -22,9 +21,9 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button class="button" type="submit">Зарегистрироваться</button>
-    <a style="display: block; text-align: center; margin-top: 20px;" href="{% url 'login' %}">Войти</a>
+    <button class="button" style="margin-top: 10px"><a style="color: #FFFFFF;" href="{% url 'login' %}">Войти</a></button>
 </form>
-    
+
 <div>
 
 
@@ -44,6 +43,7 @@
     <a class="buttonBack" href="{% url 'home' %}">Главная</a>
 </div>
 </div>
+
 <script>
        if ('serviceWorker' in navigator) {
            navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
